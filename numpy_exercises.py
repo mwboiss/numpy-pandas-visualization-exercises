@@ -161,7 +161,7 @@ for row in b:
     sum_of_b += sum(row)
 sum_of_b
 
-# 
+# Since the list of lists is assigned to a numpy array we can use the .sum() and assign it to a new variable
 sum_of_b = new_b.sum()
 sum_of_b
 
@@ -169,26 +169,41 @@ sum_of_b
 min_of_b = min(b[0]) if min(b[0]) <= min(b[1]) else min(b[1])  
 min_of_b
 
+min_of_b = new_b.min()
+min_of_b
 
 # Exercise 3 - refactor the following maximum calculation to find the answer with numpy.
 max_of_b = max(b[0]) if max(b[0]) >= max(b[1]) else max(b[1])
 
+max_of_b = new_b.max()
+max_of_b
 
 # Exercise 4 - refactor the following using numpy to find the mean of b
 mean_of_b = (sum(b[0]) + sum(b[1])) / (len(b[0]) + len(b[1]))
+mean_of_b
+
+mean_of_b = new_b.mean()
+mean_of_b
 
 # Exercise 5 - refactor the following to use numpy for calculating the product of all numbers multiplied together.
 product_of_b = 1
 for row in b:
     for number in row:
         product_of_b *= number
+product_of_b
+
+product_of_b = new_b.prod()
+product_of_b
 
 # Exercise 6 - refactor the following to use numpy to find the list of squares 
 squares_of_b = []
 for row in b:
     for number in row:
         squares_of_b.append(number**2)
+squares_of_b
 
+squares_of_b = np.square(new_b)
+squares_of_b
 
 # Exercise 7 - refactor using numpy to determine the odds_in_b
 odds_in_b = []
@@ -196,7 +211,10 @@ for row in b:
     for number in row:
         if(number % 2 != 0):
             odds_in_b.append(number)
+odds_in_b
 
+odds_in_b = new_b [new_b % 2 != 0]
+odds_in_b
 
 # Exercise 8 - refactor the following to use numpy to filter only the even numbers
 evens_in_b = []
@@ -204,14 +222,28 @@ for row in b:
     for number in row:
         if(number % 2 == 0):
             evens_in_b.append(number)
+evens_in_b
+
+evens_in_b = new_b [new_b % 2 == 0]
+evens_in_b
 
 # Exercise 9 - print out the shape of the array b.
 
+np.shape(new_b)
+
+# Gives me a tuple with 2,3 which means that there are 2 lists with 3 elements in my array.
+
 # Exercise 10 - transpose the array b.
+
+np.transpose(new_b)
 
 # Exercise 11 - reshape the array b to be a single list of 6 numbers. (1 x 6)
 
+new_b.reshape(6)
+
 # Exercise 12 - reshape the array b to be a list of 6 lists, each containing only 1 number (6 x 1)
+
+new_b.reshape(-1,1)
 
 ## Setup 3
 c = [
@@ -220,22 +252,49 @@ c = [
     [7, 8, 9]
 ]
 
+new_c = np.array(c)
+new_c
+
 # HINT, you'll first need to make sure that the "c" variable is a numpy array prior to using numpy array methods.
 # Exercise 1 - Find the min, max, sum, and product of c.
 
+new_c.min()
+
+new_c.max()
+
+new_c.sum()
+
+new_c.prod()
+
 # Exercise 2 - Determine the standard deviation of c.
+
+new_c.std()
 
 # Exercise 3 - Determine the variance of c.
 
+new_c.var()
+
 # Exercise 4 - Print out the shape of the array c
+
+print(np.shape(new_c))
 
 # Exercise 5 - Transpose c and print out transposed result.
 
+print(np.transpose(new_c))
+
 # Exercise 6 - Get the dot product of the array c with c. 
+
+np.dot(new_c,new_c)
 
 # Exercise 7 - Write the code necessary to sum up the result of c times c transposed. Answer should be 261
 
+c_X_c_sum = np.sum(np.multiply(new_c, new_c.T))
+c_X_c_sum
+
 # Exercise 8 - Write the code necessary to determine the product of c times c transposed. Answer should be 131681894400.
+
+c_x_c_prod = np.prod(np.multiply(new_c,new_c.T))
+c_x_c_prod
 
 
 ## Setup 4
@@ -245,27 +304,49 @@ d = [
     [60, 45, -45, 90, -45, 180]
 ]
 
+new_d = np.array(d)
+
 # Exercise 1 - Find the sine of all the numbers in d
+
+np.sin(new_d)
 
 # Exercise 2 - Find the cosine of all the numbers in d
 
+np.cos(new_d)
+
 # Exercise 3 - Find the tangent of all the numbers in d
+
+np.tan(new_d)
 
 # Exercise 4 - Find all the negative numbers in d
 
+d_neg = new_d [new_d < 0]
+d_neg
+
 # Exercise 5 - Find all the positive numbers in d
+
+d_pos = new_d [new_d > 0]
+d_pos
 
 # Exercise 6 - Return an array of only the unique numbers in d.
 
+np.unique(new_d)
+
 # Exercise 7 - Determine how many unique numbers there are in d.
+
+len(np.unique(new_d))
 
 # Exercise 8 - Print out the shape of d.
 
+print(np.shape(new_d))
+
 # Exercise 9 - Transpose and then print out the shape of d.
+
+print(np.transpose(np.shape(new_d)))
 
 # Exercise 10 - Reshape d into an array of 9 x 2
 
-
+new_d.reshape(2,9)
 
 ###############################################################################################################################
 
