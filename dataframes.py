@@ -62,7 +62,7 @@ data('mpg', show_doc=True)
 
 # A) How many rows and columns are there?
 
-############ 234 rows and 11 columns ###########
+############ From show_doc: 234 rows and 11 columns ###########
 
 # B) What are the data types of each column?
 
@@ -83,8 +83,8 @@ mpg.dtypes
 
 # C) Summarize the dataframe with .info and .describe
 
-mpg.info
-mpg.describe
+mpg.info()
+mpg.describe()
 
 # D) Rename the cty column to city.
 
@@ -153,7 +153,7 @@ data('Mammals', show_doc=True)
 
 # A) How many rows and columns are there?
 
-######## 107 rows and 4 columns
+######## show_docs shows: 107 rows and 4 columns
 
 # B) What are the data types?
 
@@ -168,8 +168,8 @@ Mammals.dtypes
 
 # C) Summarize the dataframe with .info and .describe
 
-Mammals.info
-Mammals.describe
+Mammals.info()
+Mammals.describe()
 
 # D) What is the the weight of the fastest animal?
 
@@ -196,3 +196,5 @@ hopper_animals
 ##### returns a list of animals that have a True hoppers value and have a speed value above the median speed value of all animals
 hopper_animals_above_median_speed = hopper_animals [Mammals['speed'] > median_speed]
 hopper_animals_above_median_speed
+
+print(f'The number of animals that are hoppers and have a speed above the median speed is {len(hopper_animals_above_median_speed)}.\nThis is {round(len(hopper_animals_above_median_speed) / len(Mammals) * 100, 2)} percent of the total number of animals.')

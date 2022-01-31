@@ -127,42 +127,57 @@ letters.str.upper()
 
 # Problem 6: Create a bar plot of the frequencies of the 6 most commonly occuring letters.
 
-letters.values_count().islargest(6)
+largest_letters = letters.value_counts().nlargest(6)
+largest_letters.plot.bar()
+plt.show()
 
 # Use pandas to create a Series named numbers from the following list:
 
-numbers = ['$796,459.41', '$278.60', '$482,571.67', '$4,503,915.98', '$2,121,418.3', '$1,260,813.3', '$87,231.01', '$1,509,175.45', '$4,138,548.00', '$2,848,913.80', '$594,715.39', '$4,789,988.17', '$4,513,644.5', '$3,191,059.97', '$1,758,712.24', '$4,338,283.54', '$4,738,303.38', '$2,791,759.67', '$769,681.94', '$452,650.23']
+numbers = pd.Series(['$796,459.41', '$278.60', '$482,571.67', '$4,503,915.98', '$2,121,418.3', '$1,260,813.3', '$87,231.01', '$1,509,175.45', '$4,138,548.00', '$2,848,913.80', '$594,715.39', '$4,789,988.17', '$4,513,644.5', '$3,191,059.97', '$1,758,712.24', '$4,338,283.54', '$4,738,303.38', '$2,791,759.67', '$769,681.94', '$452,650.23'])
 
 # Problem 1: What is the data type of the numbers Series?
 
+numbers.dtype
 
+##### Numbers is a Object type. The above code returns: dtype('O')
 
 # Problem 2: How many elements are in the number Series?
 
+numbers.index
+numbers.size
 
+###### numbers has 20 elements
 
 # Problem 3: Perform the necessary manipulations by accessing Series attributes and methods to convert the numbers Series to a numeric data type.
 
-
+f_numbers = numbers.str.replace('$','').str.replace(',','').astype('float')
 
 # Problem 4: Run the code to discover the maximum value from the Series.
 
-
+f_numbers.max()
 
 # Problem 5: Run the code to discover the minimum value from the Series.
 
-
+f_numbers.min()
 
 # Problem 6: What is the range of the values in the Series?
 
-
+f_numbers.max() - f_numbers.min()
 
 # Problem 7: Bin the data into 4 equally sized intervals or bins and output how many values fall into each bin.
 
-
+bin_f_numbers = pd.cut(f_numbers, 4).value_counts()
 
 # Problem 8: Plot the binned data in a meaningful way. Be sure to include a title and axis labels.
 
+
+#########################################
+bin_f_numbers.plot.bar()
+plt.title('Numbers in Four Bins')
+plt.xlabel('Bins')                              #START HERE
+plt.ylabel('Numbers per Bin')
+plt.show()
+###########################################
 
 
 # Use pandas to create a Series named exam_scores from the following list:
